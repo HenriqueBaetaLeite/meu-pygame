@@ -9,14 +9,15 @@ class Character:
         self.height = height
         self.speed = int(speed)
         self.screen = screen
-        self.position_x = int(600 / 2 - width / 2)
-        self.position_y = int(400 / 2 - height / 2)
+        self.position_x = int(600 / 2 - self.width / 2)
+        self.position_y = int(400 / 2 - self.height / 2)
         player = pygame.draw.rect(
             self.screen,
             (0, 255, 255),
             (self.position_x, self.position_y, self.width, self.height),
         )
         self.keys = pygame.key.get_pressed()
+        print(self.position_x)
 
     # def create_player(self):
 
@@ -24,7 +25,9 @@ class Character:
 
         if self.keys[pygame.K_LEFT]:
             print("seta esquerda acionada")
+            print(self.position_x)
             self.position_x -= self.speed
+            print(self.position_x)
             if self.position_x < -40:
                 self.position_x = 635
 

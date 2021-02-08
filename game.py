@@ -3,11 +3,9 @@ from pygame.locals import *
 from sys import exit
 
 # from create_timer import Timer
-
 from scenario import Scenario
 
-
-# classe de cenário
+from character import Character
 
 
 class Game:
@@ -20,30 +18,20 @@ class Game:
 
         scenario = Scenario(self.width, self.height)
 
-        # configuro o tamanho da tela
-        # screen = pygame.display.set_mode((self.width, self.height))
-
-        # configuro a letra
-        fonte = pygame.font.SysFont("likhan", 30, bold=True, italic=False)
-
-        # Título do game na janela
-        # pygame.display.set_caption("Meu PyGame")
-
         clock = pygame.time.Clock()
+
+        scenario.create_scenario()
 
         while True:
             clock.tick(30)
-            # screen.fill((255, 255, 255))
-
-            scenario.create_scenario()
 
             scenario.create_character()
+
+            # scenario.create_scenario()
 
             # print(clock.get_fps())
 
             keys = pygame.key.get_pressed()
-
-            texto1 = fonte.render("Tela Inicial", True, (0, 0, 0))
 
             # Este -for- "vigia" cada evento do jogo, caso a letra q seja pressionada
             # ou clique no botão de fechar a janela o jogo encerra.
@@ -53,7 +41,6 @@ class Game:
                     pygame.quit()
                     exit()
 
-            # screen.blit(texto1, (200, 10))
             pygame.display.update()
 
 
